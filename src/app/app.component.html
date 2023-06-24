@@ -1,14 +1,22 @@
-<div class="max-w-2xl container mx-auto pt-5">
+<app-global-error></app-global-error>
 
+<div class="max-w-2xl container mx-auto pt-5">
   <h1 class="text-center font-bold text-lg mb-2">{{title | titlecase}}</h1>
+
+  <label class="block mb-2 text-center">Filter:</label>
+  <input
+    type="text"
+    class="mb-4 border py-2 px-4 w-full"
+    placeholder="Filter"
+    [(ngModel)]="term"
+  >
 
 <!--  <p *ngIf="loading" class="text-center">Loading...</p>-->
 
+  <p *ngIf="loading" class="text-center text-lg">Loading...</p>
+
   <app-product
-    [product]="products[0]"
-  ></app-product>
-  <app-product
-    [product]="products[1]"
+    *ngFor="let product of products$ | async" [product]="product"
   ></app-product>
 
 </div>
