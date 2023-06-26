@@ -1,29 +1,9 @@
 <app-global-error></app-global-error>
 
-<div class="max-w-2xl container mx-auto pt-5">
-  <h1 class="text-center font-bold text-lg mb-2">{{title | titlecase}}</h1>
+<app-navigation></app-navigation>
 
-  <label class="block mb-2 text-center">Filter:</label>
-  <input
-    type="text"
-    class="mb-4 border py-2 px-4 w-full"
-    placeholder="Filter"
-    [(ngModel)]="term"
-  >
+<div class="max-w-2xl container mx-auto pt-5 mt-[50px]">
 
-<!--  <p *ngIf="loading" class="text-center">Loading...</p>-->
+  <router-outlet></router-outlet>
 
-  <p *ngIf="loading" class="text-center text-lg">Loading...</p>
-
-  <div
-    *ngIf="products$ | async as products"
-  >
-    <app-product
-      *ngFor="let product of products | filterProducts:term" [product]="product"
-    ></app-product>
-  </div>
-
-  <app-modal title="Create new product">
-    <app-create-product></app-create-product>
-  </app-modal>
 </div>
